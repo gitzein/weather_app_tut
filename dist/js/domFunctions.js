@@ -1,4 +1,6 @@
 import { wmoDesc } from "./wmoDesc.js";
+const weatherLookup = wmoDesc;
+
 export const setPlaceholderText = () => {
   const input = document.getElementById("searchBar__text");
   window.innerWidth < 400
@@ -68,6 +70,7 @@ export const updateDisplay = (weatherJson, locationObj) => {
     weatherJson.current.weather_code,
     weatherJson.current.is_day
   );
+  console.log(weatherClass);
   setBgImage(weatherClass);
   const screenReaderWeather = buildScreenReaderWeather(
     weatherJson,
@@ -112,12 +115,11 @@ const deleteContents = (parentElement) => {
 };
 
 const getWeatherClass = (wmoCode, isDay) => {
-  const weatherLookup = wmoDesc;
   let weatherClass;
   if (isDay == "1") {
     weatherClass = weatherLookup[wmoCode].day.description;
   } else {
-    weatherClass = weatherLookup[wmoCode].night.description;
+    weatherClass = weatherLookup[wmoCode].night.description + " Night";
   }
   return weatherClass;
 };
@@ -125,6 +127,7 @@ const getWeatherClass = (wmoCode, isDay) => {
 const setBgImage = (weatherDesc) => {
   const regex = / /g;
   const weatherClass = weatherDesc.replaceAll(regex, "_");
+  console.log(weatherClass);
   document.documentElement.classList.add(weatherClass);
   document.documentElement.classList.forEach((img) => {
     if (img !== weatherClass) document.documentElement.classList.remove(img);
@@ -132,7 +135,6 @@ const setBgImage = (weatherDesc) => {
 };
 
 const buildScreenReaderWeather = (weatherJson, locationObj) => {
-  const weatherLookup = wmoDesc;
   const wmoCode = weatherJson.current.weather_code;
   const isDay = weatherJson.current.is_day === "1" ? "day" : "night";
   const location = locationObj.getName();
@@ -150,7 +152,7 @@ const setFocusOnSearch = () => {
 const createCurrentConditionsDivs = (weatherObj, unit) => {
   const tempUnit = unit === "Imperial" ? "F" : "C";
   const windUnit = unit === "Imperial" ? "mph" : "Km/h";
-  const weatherLookup = wmoDesc;
+
   const wmoCode = weatherObj.current.weather_code;
   const isDay = weatherObj.current.is_day == "1" ? "day" : "night";
   const icon = createMainImageDiv(
@@ -225,7 +227,6 @@ const createElem = (elemType, divClassName, divText, unit) => {
     const unitDiv = document.createElement("div");
     unitDiv.classList.add("unit");
     unitDiv.textContent = tempUnit;
-    console.log(tempUnit);
     div.appendChild(unitDiv);
   }
   return div;

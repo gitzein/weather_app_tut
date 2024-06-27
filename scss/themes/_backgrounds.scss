@@ -16,6 +16,24 @@
   background-position: center;
 }
 
+.Rain_Night,
+.Drizzle_Night,
+.Showers_Night,
+.Light_Rain_Night,
+.Light_Drizzle_Night,
+.Light_Showers_Night,
+.Heavy_Rain_Night,
+.Heavy_Drizzle_Night,
+.Heavy_Showers_Night,
+.Light_Freezing_Rain_Night,
+.Light_Freezing_Drizzle_Night,
+.Freezing_Rain_Night,
+.Freezing_Drizzle_Night {
+  background-color: $night-color;
+  background-image: url("../../dist/img/nightrain.jpg");
+  background-position: center;
+}
+
 .Snow,
 .Light_Snow_Showers,
 .Snow_Showers,
@@ -27,9 +45,15 @@
   background-position: left;
 }
 
-.night {
+.Snow_Night,
+.Light_Snow_Showers_Night,
+.Snow_Showers_Night,
+.Light_Snow_Night,
+.Heavy_Snow_Night,
+.Snow_Grains_Night {
   background-color: $night-color;
-  background-image: url("../../dist/img/night.jpg");
+  background-image: url("../../dist/img/snowynight.jpg");
+  background-position: left;
 }
 
 .Foggy,
@@ -39,10 +63,24 @@
   background-position: center;
 }
 
+.Foggy_Night,
+.Rime_Fog_Night {
+  background-color: $fog-color;
+  background-image: url("../../dist/img/foggynight.jpg");
+  background-position: center;
+}
+
 .Cloudy,
 .Partly_Cloudy {
   background-color: $background-color;
   background-image: url("../../dist/img/Cloudy.jpg");
+  background-position: center;
+}
+
+.Cloudy_Night,
+.Partly_Cloudy_Night {
+  background-color: $night-color;
+  background-image: url("../../dist/img/Cloudynight.jpg");
   background-position: center;
 }
 
@@ -57,6 +95,13 @@
 .Mainly_Clear {
   background-color: $background-color;
   background-image: url("../../dist/img/Clear_Sky.jpg");
+  background-position: center;
+}
+
+.Clear_Night,
+.Mainly_Clear_Night {
+  background-color: $night-color;
+  background-image: url("../../dist/img/night.jpg");
   background-position: center;
 }
 

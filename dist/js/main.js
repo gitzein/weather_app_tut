@@ -2,7 +2,6 @@ import {
   setLocationObject,
   getHomeLocation,
   getWeatherFromCoords,
-  getWeatherFromCoordsF,
   getCoordsFromApi,
   cleanText,
 } from "./dataFunctions.js";
@@ -147,7 +146,6 @@ const submitNewLocation = async (event) => {
       };
       setLocationObject(currentLoc, myCoordsObj);
       updateDataAndDisplay(currentLoc);
-      console.log(coordsData);
     } else {
       displayApiError(coordsData);
     }
@@ -157,10 +155,7 @@ const submitNewLocation = async (event) => {
 };
 
 const updateDataAndDisplay = async (locationObj) => {
-  const weatherJson =
-    locationObj._unit === "Imperial"
-      ? await getWeatherFromCoordsF(locationObj)
-      : await getWeatherFromCoords(locationObj);
+  const weatherJson = await getWeatherFromCoords(locationObj);
   if (weatherJson) updateDisplay(weatherJson, locationObj);
   console.log(locationObj._unit);
 };
